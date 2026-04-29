@@ -25,10 +25,11 @@ Open VS Code terminal:
 ```bash
 cd backend
 python -m venv .venv
-.venv\Scripts\activate
-python -m pip install --upgrade pip
+cp .env.example .env
 pip install -r requirements.txt
 copy .env.example .env
+python init_db.py
+python -m uvicorn api_app:app --reload --port 8000
 ```
 
 Open `backend/.env` and make sure this matches your PostgreSQL password:
@@ -63,7 +64,7 @@ Open a second VS Code terminal:
 ```bash
 cd react_app
 npm install
-copy .env.example .env
+cp .env.example .env
 npm run dev
 ```
 
@@ -84,6 +85,13 @@ python -m venv .venv
 python -m pip install --upgrade pip
 pip install -r requirements.txt
 copy .env.example .env
+
+or
+
+cd ~/Documents/inventory_three_port_app/table_app
+cp .env.example .env
+python -m pip install -r requirements.txt
+python -m uvicorn table_app:app --reload --port 5000
 ```
 
 Make sure `table_app/.env` has the same database URL as the backend.
