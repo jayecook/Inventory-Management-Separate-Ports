@@ -140,3 +140,4 @@ If port 3000, 5000, or 8000 is already being used, stop the old terminal with `C
 If the app says the database does not exist, create `inventory_db` first in PostgreSQL.
 
 If password authentication fails, update `DATABASE_URL` in both `.env` files to match your real PostgreSQL password.
+# Inventory-Management-Separate-Ports
