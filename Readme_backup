@@ -1,0 +1,47 @@
+Steps to be completed in the terminal for all three (React, RESTAPI and Table) to be run on different ports - 
+
+^^^^^ For the REST API - complete all steps or copy in paste in the terminal 
+
+cd backend
+python -m venv .venv
+cp .env.example .env
+pip install -r requirements.txt
+copy .env.example .env
+python init_db.py
+python -m uvicorn api_app:app --reload --port 8000
+
+********* If that doesn't work use the following code to check and install necessary pips -
+
+cd ~/Documents/inventory_three_port_app/backend
+cp .env.example .env
+python -m pip install -r requirements.txt
+python init_db.py
+python -m uvicorn api_app:app --reload --port 8000
+
+^^^^^ For the REACT App to engage - complete all steps or copy in paste in the terminal 
+
+cd react_app
+npm install
+cp .env.example .env
+npm run dev
+
+*******If you cannot find the React App, 
+Use the following bash code******* - 
+
+cd ~/Documents/inventory_three_port_app
+ls 
+
+^^^^^ For the Product Table to be started - complete all steps or copy in paste in the terminal 
+
+cd ~/Documents/inventory_three_port_app/table_app
+cp .env.example .env
+python -m pip install -r requirements.txt
+python -m uvicorn table_app:app --reload --port 5000
+
+
+
+You can check all sources now by opening the following ports - 
+http://localhost:8000/docs
+http://localhost:3000
+http://localhost:5000
+
