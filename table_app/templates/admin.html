@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Inventory Admin</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<div class="page-container">
+    <div class="top-bar">
+        <div>
+            <h1>Admin Inventory Manager</h1>
+            <p class="subtext">Logged in as {{ admin_username }}</p>
+        </div>
+        <a class="button-link" href="/logout">Logout</a>
+    </div>
+
+    <form class="card form-row" method="post" action="/admin/add">
+        <input name="name" placeholder="Product name" required>
+        <input name="stock" type="number" placeholder="Stock" required>
+        <input name="amount" type="number" placeholder="Amount" required>
+        <button type="submit">Add Product</button>
+    </form>
+
+    <div class="card">
+        <table>
+            <tr><th>ID</th><th>Name</th><th>Stock</th><th>Amount</th><th>Status</th><th>Actions</th></tr>
+            {% for p in products %}
+            <tr>
+                <form method="post" action="/admin/update/{{ p.id }}">
+                    <td>{{ p.id }}</td>
+                    <td><input name="name" value="{{ p.name }}" required></td>
+                    <td><input name="stock" type="number" value="{{ p.stock }}" required></td>
+                    <td><input name="amount" type="number" value="{{ p.amount }}" required></td>
+                    <td>{% if p.stock <= p.amount * 0.25 %}<span class="low">LOW STOCK</span>{% else %}<span class="ok">OK</span>{% endif %}</td>
+                    <td>
+                        <button type="submit">Update</button>
+                    </form>
+                    <form class="inline" method="post" action="/admin/delete/{{ p.id }}">
+                        <button class="danger" type="submit">Delete</button>
+                    </form>
+                    </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+</body>
+</html>
